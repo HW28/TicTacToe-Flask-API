@@ -1,0 +1,6 @@
+flask
+flask-sqlalchemy
+pytest
+SQLAlchemy
+werkzeug
+PyJWT
