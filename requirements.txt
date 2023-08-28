@@ -1,6 +1,7 @@
-flask
-flask-sqlalchemy
-pytest
-SQLAlchemy
-werkzeug
-PyJWT
+Flask==2.3.3
+Flask-SQLAlchemy==3.0.5
+pytest==7.4.0
+SQLAlchemy==2.0.20
+Werkzeug==2.3.7
+PyJWT==2.8.0
+python-dotenv==1.0.0
