@@ -22,8 +22,8 @@ def check_winner(board):
             return board[i]
 
     # Check diagonals for a winner
-    if (board[0] == board[4] == board[8] != "-" or 
-        board[2] == board[4] == board[6] != "-"):
+    if (board[0] == board[4] == board[8] != "-" or
+            board[2] == board[4] == board[6] != "-"):
         logging.info(f"Winner found in diagonal: {board[4]}")
         return board[4]
 
@@ -48,7 +48,8 @@ def create_game():
 
 # Function to make a move in the game
 def make_move(game_id, player, x, y):
-    logging.debug(f"Move attempt by player {player} at position ({x}, {y}) for game with ID {game_id}")
+    logging.debug(f"Move attempt by player {player} at position ({x}, {y}) "
+                  f"for game with ID {game_id}")
 
     # Validate coordinates
     if not (0 <= x < 3) or not (0 <= y < 3):
@@ -59,8 +60,8 @@ def make_move(game_id, player, x, y):
     if player not in ["X", "O"]:
         logging.warning("Invalid player")
         return None, "Invalid player"
-    
-    game = Game.query.get(game_id)
+
+    game = db.session.get(Game, game_id)
     # Check if game exists
     if game is None:
         logging.warning(f"Game with ID {game_id} not found")
@@ -70,7 +71,7 @@ def make_move(game_id, player, x, y):
     if game.winner is not None:
         logging.info(f"The game with ID {game_id} has already ended")
         return None, "Game has already ended"
-        
+
     # Check if it's the current player's turn
     if game.current_player != player:
         logging.warning("Not the current player's turn")
@@ -87,7 +88,7 @@ def make_move(game_id, player, x, y):
     board[index] = player
     game.board = "".join(board)
     winner = check_winner(game.board)
-    
+
     # Update game state based on move
     if winner:
         game.winner = winner if winner != "draw" else None
@@ -96,11 +97,12 @@ def make_move(game_id, player, x, y):
         game.current_player = "O" if player == "X" else "X"
 
     db.session.commit()
-    logging.info(f"Board updated: {game.board}, Player's turn: {game.current_player}")
+    logging.info(f"Board updated: {game.board}, "
+                 f"Player's turn: {game.current_player}")
     return game, None
 
 
 # Function to get the current state of a game
 def get_game(game_id):
     logging.debug(f"Retrieving game details with ID {game_id}")
-    return Game.query.get(game_id)
+    return db.session.get(Game, game_id)

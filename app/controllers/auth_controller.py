@@ -6,6 +6,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 auth_blueprint = Blueprint('auth', __name__)
 
+
 # Route for user registration
 @auth_blueprint.route('/register', methods=['POST'])
 def register():
@@ -19,6 +20,7 @@ def register():
     else:
         logging.warning(f"Failed to register user {username}")
         return jsonify({"error": "Registration failed"}), 400
+
 
 # Route for user login
 @auth_blueprint.route('/login', methods=['POST'])

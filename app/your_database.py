@@ -1,11 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
-from dotenv import load_dotenv
-import os
+from os import environ
 
-load_dotenv()
 
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = environ.get('SECRET_KEY', 'secret')
 
 # Define the JWT expiration period (1 day in this case)
 JWT_EXPIRATION_DELTA = timedelta(days=1)

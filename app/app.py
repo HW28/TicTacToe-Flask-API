@@ -4,13 +4,11 @@ from controllers.game_controller import game_blueprint
 from your_database import db
 import logging
 import sys
-from dotenv import load_dotenv
-import os
+from os import environ
 
 
-load_dotenv()
-
-SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
+SQLALCHEMY_DATABASE_URI = environ.get('DB_URL',
+                                      'sqlite:///test_database.db')
 
 # Configure logging settings
 logging.basicConfig(
@@ -36,4 +34,4 @@ app.register_blueprint(game_blueprint)
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)

@@ -1,5 +1,6 @@
 from your_database import db
 
+
 class Game(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     board = db.Column(db.String(9), nullable=False, default="-" * 9)
