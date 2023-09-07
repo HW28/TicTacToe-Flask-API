@@ -49,7 +49,7 @@ def test_game_flow(client):
     response = client.post('/create', headers=headers)
     assert response.status_code == 201
     game_data = json.loads(response.data)
-    game_id = game_data['id']
+    game_id = game_data['matchID']
 
     # Make a move
     data = {"game_id": game_id, "player": "X", "x": 0, "y": 0}
