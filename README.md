@@ -7,7 +7,11 @@ This project is a service of the Tic-Tac-Toe game developed with Flask. The goal
    - your_database.py: A file associated with the configuration or management of the project's database.
    - models/: A directory containing the data models used in the application.
    - controllers/: A directory containing the application's controllers, which manage the data flow between models and views.
+<<<<<<< HEAD
    - services/: A directory containing various services utilized in the application, like services to manage specific business logics.
+=======
+   - services/: A directory containing various services utilized in the application, like services to manage specific business logic.
+>>>>>>> feature/update-readme
    - test_app.py: A file containing unit tests for the application, ensuring that the main functionalities are working as expected.
 2. requirements.txt: A file listing all the necessary Python dependencies for the project.
 3. Dockerfile: A file containing instructions to create a Docker image for the project.
@@ -19,7 +23,11 @@ This project is a service of the Tic-Tac-Toe game developed with Flask. The goal
 To avoid conflicts with dependencies, it is recommended to create a virtual environment. You can do this using the following command:
 ```bash
     python3 -m venv env
+<<<<<<< HEAD
     source env/bin/activate  # On Windows, use `env\Scripts\activate`
+=======
+    source env/bin/activate  # On Windows, use `.\env\Scripts\activate`
+>>>>>>> feature/update-readme
 ```
 2. Installing Dependencies
 Once the environment is set up, you can install the necessary dependencies using the following command:
@@ -98,7 +106,11 @@ This documentation describes the endpoints of the Tic Tac Toe game API. Each end
 - **Response Format**:
     ```bash
     {
+<<<<<<< HEAD
         "{matchID": "Game ID"
+=======
+        "matchID": "Game ID"
+>>>>>>> feature/update-readme
     }
     ```
 
