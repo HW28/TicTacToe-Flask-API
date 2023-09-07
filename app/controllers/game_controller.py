@@ -25,7 +25,7 @@ def create():
     game = create_game()
 
     logging.info("Game created successfully")
-    return jsonify(game.to_dict()), 201
+    return jsonify({'matchID': game.id}), 201
 
 
 # Route to make a move in an existing game
